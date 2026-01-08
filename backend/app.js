@@ -12,9 +12,8 @@ app.use(
     origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
-app.options("*", cors());
 app.use(express.json());
 
 app.get("/health", (_req, res) => {
