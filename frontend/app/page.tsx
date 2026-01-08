@@ -47,7 +47,7 @@ export default function Home() {
         setProjects(data);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "Error al cargar proyectos."
+          err instanceof Error ? err.message : "Error al cargar proyectos"
         );
       } finally {
         setLoading(false);
