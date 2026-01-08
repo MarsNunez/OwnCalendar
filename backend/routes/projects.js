@@ -28,7 +28,11 @@ router.get("/", async (_req, res) => {
     const projects = await Project.find().sort({ createdAt: -1 });
     res.json(projects);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener proyectos." });
+    console.error("[projects] Error al obtener proyectos:", error);
+    res.status(500).json({
+      error: "Error al obtener proyectos.",
+      detail: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
   }
 });
 
