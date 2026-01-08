@@ -11,7 +11,7 @@ const mongoDbName = process.env.MONGO_DB;
 const startServer = async () => {
   try {
     if (!mongoUrl) {
-      throw new Error("Falta la variable de entorno MONGO_URL o MONGO_URI.");
+      throw new Error("Falta la variable de entorno MONGO_URL o MONGO_URI");
     }
 
     await mongoose.connect(mongoUrl, {
