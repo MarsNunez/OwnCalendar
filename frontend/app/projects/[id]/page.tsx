@@ -19,7 +19,9 @@ type Project = {
   grids: Grid[];
 };
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002/api";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://own-calendar-back.vercel.app/api";
 const THEME_KEY = "calendar-theme";
 
 export default function ProjectPage() {
