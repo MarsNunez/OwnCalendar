@@ -1,22 +1,14 @@
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import app from "./app.js";
+import { connectToDatabase } from "./lib/db.js";
 
 dotenv.config();
 
 const PORT = process.env.PORT || 3002;
-const mongoUrl = process.env.MONGO_URL || process.env.MONGO_URI || "";
-const mongoDbName = process.env.MONGO_DB;
 
 const startServer = async () => {
   try {
-    if (!mongoUrl) {
-      throw new Error("Falta la variable de entorno MONGO_URL o MONGO_URI");
-    }
-
-    await mongoose.connect(mongoUrl, {
-      dbName: mongoDbName,
-    });
+    await connectToDatabase();
     console.log("✅ Conectado a MongoDB");
 
     app.listen(PORT, () => {
@@ -25,6 +17,7 @@ const startServer = async () => {
 
     const shutdown = async () => {
       console.log("\n[server] Cerrando...");
+      const mongoose = await import("mongoose");
       await mongoose.disconnect();
       process.exit(0);
     };
