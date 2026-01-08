@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const gridSchema = new Schema(
   {
@@ -19,4 +19,4 @@ const projectSchema = new Schema(
   { timestamps: true },
 );
 
-export default model("Project", projectSchema);
+export default models.Project || model("Project", projectSchema);
